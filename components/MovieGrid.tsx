@@ -10,15 +10,17 @@ type MovieGridProps = {
 }
 
 export function MovieGrid({ movies, loading, error, type }: MovieGridProps) {
-    if (loading) return <p className="text-center mt-8 text-white">Cargando...</p>;
-    if (error) return <p className="text-center mt-8 text-red-500">Error al cargar las peliculas: {error}</p>
-    if (movies.length === 0) return <p className="text-center mt-8 text-white">No hay resultados.</p>
-
-    const filteredMedia = type
-        ? movies.filter((m: any) => m.type === type)
-        : movies;
 
     const router = useRouter();
+
+    if (loading) return <p className="text-center mt-8 text-white">Cargando...</p>;
+    if (error) return <p className="text-center mt-8 text-red-500">Error al cargar las peliculas: {error}</p>;
+    if (movies.length === 0) return <p className="text-center mt-8 text-white">No hay resultados.</p>;
+    
+    const filteredMedia = type
+        ? movies.filter((m: Movie) => m.type === type)
+        : movies;
+
     const handleClick = (media: Movie) => {
         sessionStorage.setItem("selectedMedia", JSON.stringify(media)); // Guardamos los datos de la pelicula/serie.
         router.push(`/details/${media.id}?type=${media.type}`);

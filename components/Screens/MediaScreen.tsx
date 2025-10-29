@@ -38,6 +38,7 @@ export default function MediaScreen({ type }: MediaScreenProps) {
             const results = await fetchAllMedia(searchTerm, pageNum);
             setMovies(results);
             setSeries(results);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (err: any) {
             setError(err.message);
         } finally {
@@ -82,7 +83,7 @@ export default function MediaScreen({ type }: MediaScreenProps) {
                 setMovies(movies);
                 setSeries(series);
             }
-
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (err: any) {
             setError(err.message);
         } finally {
