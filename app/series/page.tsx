@@ -3,6 +3,6 @@
 import MediaScreen from "@/components/Screens/MediaScreen";
 
 
-export default function HomePage() {
-  return <MediaScreen type="home"/>;
+export default function SeriesPage() {
+  return <MediaScreen type="series"/>;
 }

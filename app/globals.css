@@ -44,3 +44,33 @@ a {
     color-scheme: dark;
   }
 }
+
+@layer utilities {
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #690000 transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #7c0f0f;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #7c0f0f;
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #a81212;
+  }
+
+  .genre-transition {
+    transition:
+      max-height 0.5s ease-in-out,
+      opacity 0.4s ease-in-out 0.1s;
+  }
+}

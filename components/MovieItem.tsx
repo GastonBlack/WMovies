@@ -3,25 +3,31 @@ import { Movie } from "./Types/Movie";
 
 type MovieItemProps = {
     movie: Movie;
+    onClick?: () => void;
 }
 
-export function MovieItem({ movie }: MovieItemProps) {
+export function MovieItem({ movie, onClick }: MovieItemProps) {
     return (
         <article
+            onClick={onClick}
             className="
-            flex flex-col w-[12rem] bg-zinc-900/60 rounded-lg overflow-hidden 
-            border border-zinc-800 hover:scale-105 transition-all duration-200
-            cursor-pointer
+            flex flex-col w-[12rem] bg-zinc-900/60 rounded-lg overflow-hidden hover:scale-105 transition-all duration-200
+            cursor-pointer border-1 border-gray-800 relative
             "
         >
+            <span
+                className="absolute top-1 -left-1 bg-red-800/65 text-white text-xs font-semibold px-2 py-1 rounded-sm shadow-lg"
+            >
+                {movie.type === "movie" ? "Película" : "Serie"}
+            </span>
             <img
                 src={getImageUrl(movie.poster_path)}
-                alt={movie.title}
+                alt={movie.title || movie.name}
                 className="w-full h-full object-cover"
             />
             <div className="flex flex-col p-2">
 
-                <h3 className="text-sm text-white font-medium truncate">{movie.title}</h3>
+                <h3 className="text-sm text-white font-medium truncate">{movie.title || movie.name}</h3>
 
                 <div className="flex flex-row gap-1 mt-1 items-center">
                     <p className="flex items-center justify-center text-centertext-xs text-zinc-400 text-center">{(movie.vote_average ? movie.vote_average.toFixed(1) : "?")}/10</p>
